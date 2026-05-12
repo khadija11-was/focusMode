@@ -1,0 +1,24 @@
+<div class="container">
+<h1>Pomodoros</h1>
+
+<form method="POST" action="/pomodoros/add/">
+    {% csrf_token %}
+
+    <select name="task">
+        {% for task in tasks %}
+            <option value="{{ task.id }}">{{ task.title }}</option>
+        {% endfor %}
+    </select>
+
+    <input type="number" name="duration" value="25">
+    <button>Add</button>
+</form>
+
+<ul>
+{% for p in pomodoros %}
+    <li>
+        {{ p.task.title }} - {{ p.duration }} min
+    </li>
+{% endfor %}
+</ul>
+</div>

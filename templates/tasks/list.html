@@ -1,0 +1,18 @@
+<div class="container">
+<h1>Tasks</h1>
+
+<form method="POST" action="/tasks/add/">
+    {% csrf_token %}
+    <input type="text" name="title">
+    <button>Add</button>
+</form>
+
+<ul>
+{% for task in tasks %}
+    <li>
+        {{ task.title }}
+        <a href="/tasks/delete/{{ task.id }}/">Delete</a>
+    </li>
+{% endfor %}
+</ul>
+</div>
